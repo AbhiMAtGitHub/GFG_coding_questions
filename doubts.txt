@@ -1,0 +1,2 @@
+1. minimum no. of jumps 
+2. minimize the heights I
