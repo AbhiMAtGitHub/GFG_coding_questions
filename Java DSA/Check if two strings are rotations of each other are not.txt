@@ -1,0 +1,11 @@
+class Solution:
+    
+    #Function to check if two strings are rotations of each other or not.
+    def areRotations(self,s1,s2):
+        if(len(s1)!=len(s2)):
+            return 0
+        temp = s1+s1
+        if(temp.count(s2)>0):
+            return 1
+        else:
+            return 0

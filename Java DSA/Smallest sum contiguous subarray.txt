@@ -1,0 +1,17 @@
+class Solution
+{
+    static int smallestSumSubarray(int a[], int size)
+    {
+        int minSum = Integer.MAX_VALUE, presentSum = 0;
+        for(int i=0;i<size;i++){
+            if(presentSum>0)
+                presentSum = a[i];
+            else{
+                presentSum += a[i];
+            }
+            
+            minSum = Math.min(presentSum,minSum);
+        }
+        return minSum;
+    }
+}

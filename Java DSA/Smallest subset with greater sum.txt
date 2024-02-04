@@ -1,0 +1,18 @@
+class Solution { 
+    int minSubset(int[] Arr,int N) { 
+        Arrays.sort(Arr);
+        long sum = 0;
+        int count = 0;
+        for(int i=N-1;i>=0;i--){
+            sum += Arr[i];
+            long sum1 = 0;
+            for(int j=0;j<i;j++){
+                sum1 += Arr[j]; 
+            }
+            count++; 
+            if(sum>sum1)
+                break;
+        }
+        return count;
+    }
+}

@@ -1,0 +1,29 @@
+class Solution
+{
+    static boolean isPrime(int num){
+        if(num<=1)
+            return false;
+        for(int i=2;i<=Math.sqrt(num);i++){
+            if(num%i==0)
+                return false;
+        }
+        return true;
+    }
+    public int Count(int L, int R)
+    {
+        if(L==R)
+            return 1;
+        int prime = 0, comp = 0;
+        for(int i=L;i<=R;i++){
+            if(i==1)
+                continue;
+            else if(i==2|| i==3)
+                prime++;
+            else if(isPrime(i))
+                prime++;
+            else 
+                comp++;
+        }
+        return comp-prime;
+    }
+}

@@ -1,0 +1,32 @@
+class Solution
+{
+    static ArrayList<Integer> list = new ArrayList<Integer>();
+    static int idx = 0;
+    
+    static void inOrder(Node root)
+    {
+        if(root == null)
+            return;
+        
+        inOrder(root.left);
+        list.add(root.data);
+        inOrder(root.right);
+    }
+    
+    static void postOrder(Node root)
+    {
+        if(root == null)
+            return;
+        
+        postOrder(root.left);
+        postOrder(root.right);
+        root.data = list.get(idx++);
+    }
+    
+    public static void convertToMaxHeapUtil(Node root)
+    {
+        inOrder(root);
+        
+        postOrder(root);
+    }
+}

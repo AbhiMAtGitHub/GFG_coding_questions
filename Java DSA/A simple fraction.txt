@@ -1,0 +1,36 @@
+class Solution
+{
+    public String  fractionToDecimal(int numerator, int denominator)
+    {
+        StringBuilder ans = new StringBuilder();
+        int q = numerator/denominator;
+        int r = numerator%denominator;
+        
+        ans.append(q);
+        
+        if(r==0)
+            return ans.toString();
+        else{
+            ans.append(".");
+            
+            HashMap<Integer,Integer> map = new HashMap<>();
+            
+            while(r!=0){
+                if(map.containsKey(r)){
+                    int len = map.get(r);
+                    ans.insert(len, "(");
+                    ans.append(")");
+                    break;
+                }
+                else{
+                    map.put(r, ans.length());
+                    r = r*10;
+                    q = r/denominator;
+                    r = r%denominator;
+                    ans.append(q);
+                }
+            }
+        }
+        return ans.toString();
+    }
+}
