@@ -1,0 +1,33 @@
+class Solution {
+    
+    public long firstOccur(long arr[],int low ,int high, long x, int n){
+        while(low<=high){
+        int mid = low + (high-low)/2;
+            if(arr[mid]==x && (mid==0 || x>arr[mid-1]))
+                return mid;
+            else if(x>arr[mid])
+                return firstOccur(arr,(mid+1),high,x,n);
+            else
+                return firstOccur(arr,low,(mid-1),x,n);
+        }
+        return -1;
+    }
+    
+    public long lastOccur(long arr[],int low ,int high, long x, int n){
+        while(high>=low){
+        int mid = low + (high-low)/2;
+            if(arr[mid]==x && (mid==n-1 || x<arr[mid+1]))
+                return mid;
+            else if(x<arr[mid])
+                return lastOccur(arr,low,(mid-1),x,n);
+            else
+                return lastOccur(arr,(mid+1),high,x,n);
+        }
+        return -1;
+    }
+    
+    public pair indexes(long v[], long x)
+    {
+        return new pair(firstOccur(v,0,v.length-1,x,v.length),lastOccur(v,0,v.length-1,x,v.length));
+    }
+}

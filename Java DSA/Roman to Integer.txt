@@ -1,0 +1,37 @@
+class Solution {
+    
+    static int rInt(char ch)
+    {
+        switch(ch){
+            case 'I': return 1;
+            case 'V': return 5;
+            case 'X': return 10;
+            case 'L': return 50;
+            case 'C': return 100;
+            case 'D': return 500;
+            case 'M': return 1000;
+            default: return -1;
+        }
+    }
+    
+    public int romanToDecimal(String str) {
+        int len = str.length();
+        int res = 0,i=0;
+        while(i<len){
+            if(i==len-1) {
+                res += rInt(str.charAt(i));
+                return res;
+            }   
+        int current = rInt(str.charAt(i)), next = rInt(str.charAt(i+1));
+        if(current>=next){
+            res += current;
+            i++;
+        }
+        else{
+            res += (next-current);
+            i+=2;
+        }
+        }
+        return res;
+    }
+}
